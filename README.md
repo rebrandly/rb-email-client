@@ -1,5 +1,5 @@
 # How to use
-[![npm version](https://badge.fury.io/js/rebrandly/rb-email-client.svg)](https://badge.fury.io/js/rebrandly/rb-email-client) [![Build Status](https://travis-ci.org/FedericoGinosa/rebrandly/rb-email-client.svg?branch=master)](https://travis-ci.org/FedericoGinosa/rebrandly/rb-email-client)
+[![npm version](https://badge.fury.io/js/rb-email-client.svg)](https://badge.fury.io/js/rb-email-client) [![Build Status](https://travis-ci.org/rebrandly/rb-email-client.svg?branch=master)](https://travis-ci.org/rebrandly/rb-email-client)
 
 ```js
 var RbEmailClient = require('rb-email-client').default;
