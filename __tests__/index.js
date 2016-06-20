@@ -14,28 +14,28 @@ describe('RbEmailClient', () => {
     (() => new RbEmailClient({ apiUrl: '' })).should.throw();
   });
   it('should return exception send email without parameters', () => {
-    const client = new RbEmailClient({ apiUrl: 'http://localhost:3000' });
+    const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail()
       .then(assert.fail)
   });
   it('should reject if templateEmail is not defined', done => {
-    const client = new RbEmailClient({ apiUrl: 'http://localhost:3000' });
+    const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail(null, 'torebrandly@gmail.com', {
       redirectUrl: 'http://google.it',
     }).catch(errors => done());
   });
   it('should reject if "to" parameter is not defined', done => {
-    const client = new RbEmailClient({ apiUrl: 'http://localhost:3000' });
+    const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail('welcome').catch(errors => done());
   });
   it('should send email without errors', done => {
-    const client = new RbEmailClient({ apiUrl: 'http://localhost:3000' });
+    const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail('welcome', 'torebrandly@gmail.com', {
       redirectUrl: 'http://google.it',
     }).then(results => done());
   });
   it('should send email without errors', done => {
-    const client = new RbEmailClient({ apiUrl: 'http://localhost:3000' });
+    const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail('welcome', 'torebrandly@gmail.com').catch(results => done());
   });
 });
