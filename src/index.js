@@ -55,13 +55,14 @@ class RbEmailClient {
           },
           body: JSON.stringify(body),
       })
-        .then(response => {
-          if(status >= 400) {
-            reject(respose.json());
+        .then(response => Promise.all([response.json(), response.status]))
+        .then(data => {
+          if(data[1] >= 400) {
+            return reject(data[0]);
+          } else {
+            return resolve(data[0]);
           }
-          return response.json()
         })
-        .then(resolve)
         .catch(reject);
     });
   }
