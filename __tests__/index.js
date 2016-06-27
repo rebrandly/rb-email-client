@@ -32,9 +32,10 @@ describe('RbEmailClient', () => {
     const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail('welcome', 'torebrandly@gmail.com', {
       redirectUrl: 'http://google.it',
-    }).then(results => done());
+    }).then(results => done())
+      .catch(errors => done());
   });
-  it('should send email without errors', done => {
+  it('should send email receiveing errors', done => {
     const client = new RbEmailClient({ apiUrl: 'http://localhost:9000' });
     client.sendEmail('welcome', 'torebrandly@gmail.com').catch(results => done());
   });

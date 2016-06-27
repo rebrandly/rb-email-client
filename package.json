@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node dist/index.js",
-    "test": "mocha --compilers js:node_modules/babel-core/register __tests__/index.js",
+    "test": "node_modules/mocha/bin/mocha --compilers js:node_modules/babel-core/register __tests__/index.js",
     "compile": "node_modules/babel-cli/bin/babel.js src --out-dir dist --source-maps --copy-files",
     "prepublish": "npm run compile",
     "watch": "node_modules/nodemon/bin/nodemon.js --exec node_modules/babel-cli/bin/babel-node.js src/index.js"
@@ -29,7 +29,7 @@
     "should": "^9.0.2"
   },
   "dependencies": {
-    "request": "^2.72.0"
+    "isomorphic-fetch": "^2.2.1"
   },
   "engines": {
     "node": ">= 0.10.0"

@@ -1,5 +1,5 @@
 import config from './config';
-import request from 'request';
+import fetch from 'isomorphic-fetch';
 
 class RbEmailClientException {
 
@@ -47,24 +47,26 @@ class RbEmailClient {
         parameters: Object.assign({}, parameters, { email: from }),
         to,
       };
-      request.post({
-        uri: `${this.getOptions().apiUrl}/emails/${templateEmail}/send`,
-        json: true,
-        body,
-      },
-        (errors, response) => {
-          if (errors) {
-            reject(errors);
-          } else {
-            if (response.statusCode >= 400) {
-              reject(errors);
-            }
-            resolve(response.body);
+      fetch(`${this.getOptions().apiUrl}/emails/${templateEmail}/send`, {
+          method: 'post',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body),
+      })
+        .then(response => {
+          if(status >= 400) {
+            reject(respose.json());
           }
-        });
+          return response.json()
+        })
+        .then(resolve)
+        .catch(reject);
     });
   }
 
 }
 
 export default RbEmailClient;
+
